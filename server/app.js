@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: '.env' });
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -18,7 +18,10 @@ app.use('/api/posts', posts);
 
 // MongoDB connection setup
 const keys = require('../keys');
-mongoose.connect(keys.mongoURI, { useNewUrlParser: true }, err => {
+const mongoURI =
+  process.env.NODE_ENV === 'production' ? process.env.MONGO_URI : keys.mongoURI;
+
+mongoose.connect(mongoURI, { useNewUrlParser: true }, err => {
   if (err) console.log('Error while connectiong to MongoDB', err);
 
   console.log('Connected to MongoDB successfully ...');
