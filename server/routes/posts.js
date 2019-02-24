@@ -7,6 +7,7 @@ const router = express.Router();
 // Get posts
 router.get('/', (req, res) => {
   Post.find()
+    .sort({ createdAt: -1 })
     .then(posts => res.send(posts))
     .catch(err => console.log(err));
 });
@@ -41,7 +42,7 @@ router.put('/:id', (req, res) => {
     .then(post => {
       if (post) {
         post.title = req.body.title;
-        post.body = req.body.title;
+        post.body = req.body.body;
         post
           .save()
           .then(post => res.status(201).json({ success: 'Post Updated' }))
