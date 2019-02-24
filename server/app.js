@@ -28,7 +28,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, err => {
 });
 
 // For production
-if (process.env.NOD_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   // Define the static folder
   app.use(express.static(__dirname + '/public/'));
 
