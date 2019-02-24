@@ -11,4 +11,5 @@ FullStack JavaScript Single Page Application to create and deal with the basic C
  - VueJs created with vue-cli npm module.
  - Bootstrap for the styling.
  - axios to make the requests to the backend API endpoints.
+ - Heroku cli for deployment the full assets.
 
